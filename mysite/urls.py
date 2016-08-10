@@ -1,5 +1,9 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+import django.contrib.auth.views
+from django.contrib.auth import views
+
+admin.autodiscover()
 
 urlpatterns = [
     # Examples:
@@ -7,5 +11,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/login/$', django.contrib.auth.views.login, name='login'),
     url(r'', include('blog.urls')),
+    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
 ]
