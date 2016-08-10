@@ -6,8 +6,6 @@ from .forms import PostForm, CommentForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now())
     return render(request, 'blog/post_list.html', {'posts':posts})
@@ -87,3 +85,8 @@ def comment_remove(request, pk):
     post_pk = comment.post.pk
     comment.delete()
     return redirect('blog.views.post_detail', pk=post_pk)
+
+# info #
+def info(request):
+    return render(request, 'info/info.html')
+
