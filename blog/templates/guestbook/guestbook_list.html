@@ -1,0 +1,27 @@
+{% extends 'base/base_blank.html' %}
+
+{% block content %}
+
+    <!-- form -->
+    <div class="main wrapper clearfix">
+    <h1>guestbook</h1>
+        <h1>New Guestbook</h1>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{  form.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+
+
+    </div> <!-- #main -->
+
+    <!-- list -->
+    {% for guestbook in guestbooks %}
+        <div class="panel panel-default guestbook-list">
+            <div class="panel-body">
+                {{ guestbook.author }}  <div class="date">{{ guestbook.created_date }}</div>
+                <p>{{ guestbook.text|linebreaksbr }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

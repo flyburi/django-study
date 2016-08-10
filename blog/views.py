@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Post, Comment
+from .models import Post, Comment, Guestbook
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, GuestbookForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
@@ -90,3 +90,16 @@ def comment_remove(request, pk):
 def info(request):
     return render(request, 'info/info.html')
 
+def guestbook_list(request):
+    if request.method == "POST" :
+        form = GuestbookForm(request.POST)
+        if form.is_valid():
+            guestbook = form.save(commit=False)
+            guestbook.author = request.user
+            guestbook.save()
+            return redirect('blog.views.guestbook_list')
+    else:
+        form = GuestbookForm()
+        guestbooks = Guestbook.objects.order_by('created_date')
+        return render(request, 'guestbook/guestbook_list.html', {'form': form, 'guestbooks': guestbooks})
+    # return render(request, 'guestbook/guestbook_list.html')

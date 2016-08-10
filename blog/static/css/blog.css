@@ -1,6 +1,3 @@
-body {
-    padding-left: 15px;
-}
 h1 a {
     color:#FCA205;
     font-family: 'Lobster';
@@ -56,3 +53,8 @@ h1, h2, h3, h4 {
 .comment {
     margin: 20px 0px 20px 20px;
 }
+.guestbook-list {
+    /*width: 80%;*/
+    margin-left:60px;
+    margin-right:60px;
+ }
