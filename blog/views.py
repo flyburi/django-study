@@ -90,6 +90,9 @@ def comment_remove(request, pk):
 def info(request):
     return render(request, 'info/info.html')
 
+def exhibit_image(request):
+    return render(request, 'exhibit/images.html')
+
 def guestbook_list(request):
     if request.method == "POST" :
         form = GuestbookForm(request.POST)

@@ -15,6 +15,7 @@ urlpatterns = [
 
     # info
     url(r'^info/$', views.info, name='info'),
+    url(r'^exhibit/image$', views.exhibit_image, name='exhibit_image'),
 
     # guestbook
     url(r'^guestbook/$', views.guestbook_list, name='guestbook_list'),

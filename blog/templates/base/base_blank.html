@@ -15,13 +15,23 @@
     <link rel="stylesheet" href="/static/css/normalize.min.css">
     <link rel="stylesheet" href="/static/css/main.css">
 
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+
     <script src="/static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 {#    #}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
+    <style media="screen">
+        #slider {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+    </style>
+    {% block headScript %}
+    {% endblock %}
 </head>
 
 
@@ -31,10 +41,11 @@
 <![endif]-->
 <div class="header-container">
     <header class="wrapper clearfix">
-        <h1 class="title">화려하지 않은 고백</h1>
+        <h1 class="title"><a href="/info">화려하지 않은 고백</a></h1>
         <nav>
             <ul>
                 <li><a href="/info">info</a></li>
+                <li><a href="/exhibit/image">exhibit</a></li>
                 <li><a href="/">blog</a></li>
                 <li><a href="/guestbook">guest book</a></li>
             </ul>
@@ -50,7 +61,6 @@
 </div> <!-- #main-container -->
 
 
-
 <div class="footer-container">
     <footer class="wrapper">
         <h3>About @buri</h3>
@@ -58,8 +68,6 @@
 
         <h3>Contact</h3>
         <p>instagram</p>
-
-
     </footer>
 </div>
 
@@ -67,6 +75,13 @@
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
 <script src="/static/js/main.js"></script>
+
+<!-- Magnific Popup core JS file -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+
+
+{% block footerScript %}
+{% endblock %}
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
