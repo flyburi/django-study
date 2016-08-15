@@ -1,27 +1,61 @@
-{% extends 'base/base_blank.html' %}
+{% extends 'base/base_creative.html' %}
 
 {% block content %}
-
-    <!-- form -->
-    <div class="main wrapper clearfix">
-    <h1>guestbook</h1>
-        <h1>New Guestbook</h1>
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{  form.as_p }}
-            <button type="submit" class="save btn btn-default">Save</button>
-        </form>
-
-
-    </div> <!-- #main -->
-
-    <!-- list -->
-    {% for guestbook in guestbooks %}
-        <div class="panel panel-default guestbook-list">
-            <div class="panel-body">
-                {{ guestbook.author }}  <div class="date">{{ guestbook.created_date }}</div>
-                <p>{{ guestbook.text|linebreaksbr }}</p>
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">Guest book</h1>
+                <hr>
+                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
             </div>
         </div>
-    {% endfor %}
+    </header>
+
+    <section class="guestbook" id="guestbook">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h1>Tell me what you think</h1>
+                    <form method="POST" class="post-form">
+                        {% csrf_token %}
+                        <p>
+                            <input id="id_author" maxlength="200" name="author" type="text" placeholder="name"></p>
+                        <p>
+                            <textarea cols="40" id="id_text" name="text" rows="10" placeholder="message"></textarea></p>
+                        <button type="submit" class="page-scroll btn btn-default btn-xl sr-button" data-sr-id="1">Save</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="guestbookList">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <!-- list -->
+                {% for guestbook in guestbooks %}
+                    <hr class="long">
+                    <div class="guestbook-list">
+                        <div class="panel-body">
+                            <div class="">
+                                <div class="text-left guestbook-author">
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    {{ guestbook.author }}
+                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                </div>
+                                <div class="text-right">
+                                    {{ guestbook.created_date }}
+                                </div>
+                            </div>
+                            <div class="text-left guestbook-comment">{{ guestbook.text|linebreaksbr }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

@@ -87,6 +87,9 @@ def comment_remove(request, pk):
     return redirect('blog.views.post_detail', pk=post_pk)
 
 # info #
+def home(request):
+    return render(request, 'info/home.html')
+
 def info(request):
     return render(request, 'info/info.html')
 
